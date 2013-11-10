@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A598C5B0182A151000D4238F /* monster-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = A598C5AA182A151000D4238F /* monster-hd.png */; };
+		A598C5B1182A151000D4238F /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = A598C5AB182A151000D4238F /* monster.png */; };
+		A598C5B2182A151000D4238F /* player-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = A598C5AC182A151000D4238F /* player-hd.png */; };
+		A598C5B3182A151000D4238F /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = A598C5AD182A151000D4238F /* player.png */; };
+		A598C5B4182A151000D4238F /* projectile-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = A598C5AE182A151000D4238F /* projectile-hd.png */; };
+		A598C5B5182A151000D4238F /* projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = A598C5AF182A151000D4238F /* projectile.png */; };
+		A598C5BB182A1B4D00D4238F /* SDEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = A598C5BA182A1B4D00D4238F /* SDEntity.m */; };
+		A598C5BE182A1DCC00D4238F /* SDPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A598C5BD182A1DCC00D4238F /* SDPlayer.m */; };
+		A598C5C1182A498A00D4238F /* SDEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = A598C5C0182A498A00D4238F /* SDEnemy.m */; };
 		A5A1390E1829EED80035D2C7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A1390D1829EED80035D2C7 /* QuartzCore.framework */; };
 		A5A139101829EED80035D2C7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A1390F1829EED80035D2C7 /* OpenGLES.framework */; };
 		A5A139121829EED80035D2C7 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A139111829EED80035D2C7 /* OpenAL.framework */; };
@@ -141,9 +150,22 @@
 		A5A13AB41829EEDA0035D2C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A13AB31829EEDA0035D2C7 /* AppDelegate.m */; };
 		A5A13AB71829EEDA0035D2C7 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A13AB61829EEDA0035D2C7 /* HelloWorldLayer.m */; };
 		A5A13ABA1829EEDA0035D2C7 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A13AB91829EEDA0035D2C7 /* IntroLayer.m */; };
+		A5A3A1BD182B44D4005D6AB8 /* SDBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A3A1BC182B44D4005D6AB8 /* SDBullet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A598C5AA182A151000D4238F /* monster-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "monster-hd.png"; path = "../monster-hd.png"; sourceTree = "<group>"; };
+		A598C5AB182A151000D4238F /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = monster.png; path = ../monster.png; sourceTree = "<group>"; };
+		A598C5AC182A151000D4238F /* player-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "player-hd.png"; path = "../player-hd.png"; sourceTree = "<group>"; };
+		A598C5AD182A151000D4238F /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = ../player.png; sourceTree = "<group>"; };
+		A598C5AE182A151000D4238F /* projectile-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "projectile-hd.png"; path = "../projectile-hd.png"; sourceTree = "<group>"; };
+		A598C5AF182A151000D4238F /* projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = projectile.png; path = ../projectile.png; sourceTree = "<group>"; };
+		A598C5B9182A1B4D00D4238F /* SDEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDEntity.h; sourceTree = "<group>"; };
+		A598C5BA182A1B4D00D4238F /* SDEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEntity.m; sourceTree = "<group>"; };
+		A598C5BC182A1DCC00D4238F /* SDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPlayer.h; sourceTree = "<group>"; };
+		A598C5BD182A1DCC00D4238F /* SDPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPlayer.m; sourceTree = "<group>"; };
+		A598C5BF182A498A00D4238F /* SDEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDEnemy.h; sourceTree = "<group>"; };
+		A598C5C0182A498A00D4238F /* SDEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEnemy.m; sourceTree = "<group>"; };
 		A5A1390A1829EED80035D2C7 /* SpaceInvader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceInvader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5A1390D1829EED80035D2C7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A5A1390F1829EED80035D2C7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -425,6 +447,8 @@
 		A5A13AB61829EEDA0035D2C7 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		A5A13AB81829EEDA0035D2C7 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		A5A13AB91829EEDA0035D2C7 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
+		A5A3A1BB182B44D4005D6AB8 /* SDBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBullet.h; sourceTree = "<group>"; };
+		A5A3A1BC182B44D4005D6AB8 /* SDBullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBullet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,6 +518,14 @@
 				A5A139221829EED80035D2C7 /* Resources */,
 				A5A1393A1829EED80035D2C7 /* libs */,
 				A5A13AAE1829EEDA0035D2C7 /* Supporting Files */,
+				A598C5B9182A1B4D00D4238F /* SDEntity.h */,
+				A598C5BA182A1B4D00D4238F /* SDEntity.m */,
+				A598C5BC182A1DCC00D4238F /* SDPlayer.h */,
+				A598C5BD182A1DCC00D4238F /* SDPlayer.m */,
+				A598C5BF182A498A00D4238F /* SDEnemy.h */,
+				A598C5C0182A498A00D4238F /* SDEnemy.m */,
+				A5A3A1BB182B44D4005D6AB8 /* SDBullet.h */,
+				A5A3A1BC182B44D4005D6AB8 /* SDBullet.m */,
 			);
 			path = SpaceInvader;
 			sourceTree = "<group>";
@@ -501,6 +533,12 @@
 		A5A139221829EED80035D2C7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A598C5AA182A151000D4238F /* monster-hd.png */,
+				A598C5AB182A151000D4238F /* monster.png */,
+				A598C5AC182A151000D4238F /* player-hd.png */,
+				A598C5AD182A151000D4238F /* player.png */,
+				A598C5AE182A151000D4238F /* projectile-hd.png */,
+				A598C5AF182A151000D4238F /* projectile.png */,
 				A5A139231829EED80035D2C7 /* Default.png */,
 				A5A139251829EED80035D2C7 /* Default@2x.png */,
 				A5A139271829EED80035D2C7 /* Default-568h@2x.png */,
@@ -931,16 +969,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5A139341829EED80035D2C7 /* Icon.png in Resources */,
+				A598C5B4182A151000D4238F /* projectile-hd.png in Resources */,
 				A5A13A921829EEDA0035D2C7 /* ChangeLog in Resources */,
 				A5A139261829EED80035D2C7 /* Default@2x.png in Resources */,
+				A598C5B5182A151000D4238F /* projectile.png in Resources */,
+				A598C5B0182A151000D4238F /* monster-hd.png in Resources */,
 				A5A139301829EED80035D2C7 /* Icon-Small.png in Resources */,
 				A5A1392C1829EED80035D2C7 /* Icon-72.png in Resources */,
 				A5A139241829EED80035D2C7 /* Default.png in Resources */,
 				A5A1392E1829EED80035D2C7 /* Icon-Small-50.png in Resources */,
 				A5A139391829EED80035D2C7 /* iTunesArtwork in Resources */,
 				A5A139321829EED80035D2C7 /* Icon-Small@2x.png in Resources */,
+				A598C5B3182A151000D4238F /* player.png in Resources */,
 				A5A1392A1829EED80035D2C7 /* Default-Landscape~ipad.png in Resources */,
 				A5A139281829EED80035D2C7 /* Default-568h@2x.png in Resources */,
+				A598C5B1182A151000D4238F /* monster.png in Resources */,
+				A598C5B2182A151000D4238F /* player-hd.png in Resources */,
 				A5A139361829EED80035D2C7 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -988,6 +1032,7 @@
 				A5A1395F1829EED80035D2C7 /* CCActionTiledGrid.m in Sources */,
 				A5A139A61829EED90035D2C7 /* CCMenuItem.m in Sources */,
 				A5A139411829EED80035D2C7 /* CCActionCamera.m in Sources */,
+				A5A3A1BD182B44D4005D6AB8 /* SDBullet.m in Sources */,
 				A5A13A731829EED90035D2C7 /* CDXPropertyModifierAction.m in Sources */,
 				A5A13A431829EED90035D2C7 /* CCArray.m in Sources */,
 				A5A13AA01829EEDA0035D2C7 /* plane.c in Sources */,
@@ -996,6 +1041,7 @@
 				A5A139E91829EED90035D2C7 /* CCSprite.m in Sources */,
 				A5A139901829EED90035D2C7 /* CCGrabber.m in Sources */,
 				A5A13A9A1829EEDA0035D2C7 /* mat3.c in Sources */,
+				A598C5C1182A498A00D4238F /* SDEnemy.m in Sources */,
 				A5A13AB41829EEDA0035D2C7 /* AppDelegate.m in Sources */,
 				A5A13A241829EED90035D2C7 /* CCES2Renderer.m in Sources */,
 				A5A139961829EED90035D2C7 /* CCLabelAtlas.m in Sources */,
@@ -1017,6 +1063,7 @@
 				A5A1397B1829EED90035D2C7 /* CCDirector.m in Sources */,
 				A5A1396B1829EED80035D2C7 /* CCAtlasNode.m in Sources */,
 				A5A13AB11829EEDA0035D2C7 /* main.m in Sources */,
+				A598C5BE182A1DCC00D4238F /* SDPlayer.m in Sources */,
 				A5A13A2F1829EED90035D2C7 /* CCTouchHandler.m in Sources */,
 				A5A139A91829EED90035D2C7 /* CCMotionStreak.m in Sources */,
 				A5A13A281829EED90035D2C7 /* CCGLView.m in Sources */,
@@ -1024,6 +1071,7 @@
 				A5A139591829EED80035D2C7 /* CCActionPageTurn3D.m in Sources */,
 				A5A13AAA1829EEDA0035D2C7 /* vec3.c in Sources */,
 				A5A13A5C1829EED90035D2C7 /* TGAlib.m in Sources */,
+				A598C5BB182A1B4D00D4238F /* SDEntity.m in Sources */,
 				A5A139651829EED80035D2C7 /* CCAnimation.m in Sources */,
 				A5A13A901829EEDA0035D2C7 /* aabb.c in Sources */,
 				A5A13A071829EED90035D2C7 /* CCTMXObjectGroup.m in Sources */,
@@ -1169,6 +1217,7 @@
 				A5A13ABF1829EEDA0035D2C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
