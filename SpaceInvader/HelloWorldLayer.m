@@ -9,6 +9,8 @@
 
 // Import the interfaces
 #import "HelloWorldLayer.h"
+#import "SimpleAudioEngine.h"
+#import "GameOverLayer.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -23,7 +25,7 @@
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer {
     SDPlayer *_player;
-    SDEnemy *_enemy;
+    NSMutableArray *_enemys;
 }
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -56,10 +58,14 @@
 		[self addChild:_player._sprite];
         //[self addChild:_enemy._sprite];
         [self schedule:@selector(gameLogic:) interval:1.0];
-		NSLog(@"the speed is %f.", _player._speed);
-        NSLog(@"the width is %f.", _player._sprite.contentSize.width);
+		_enemys = [[NSMutableArray alloc] init];
+        
         
         [self setTouchEnabled:YES];
+        [self schedule:@selector(update:)];
+        
+        //*add backgroud music here
+        //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:<#(NSString *)#>];
         
         // create and initialize a Label
 		//CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
@@ -130,15 +136,52 @@
 - (void)gameLogic:(ccTime)dt
 {
     //
-    SDEnemy *newEnemy = [[SDEnemy alloc] init];
+    SDEnemy *newEnemy = [[SDEnemy alloc] initWithArray:_enemys];
     [self addChild:newEnemy._sprite];
+    [_enemys addObject:newEnemy];
+    NSLog(@"projectile number = %d",_player._projectiles.count);
+    NSLog(@"enemy number = %d",_enemys.count);
+}
+
+- (void)update:(ccTime)delta
+{
+    //* main loop update function
+    [_player update:self];
+    
+    
+    NSMutableArray *bulletsToDelete = [[NSMutableArray alloc] init];
+    for (SDBullet *bullet in _player._projectiles) {
+        
+        NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
+        for (SDEnemy *enemy in _enemys) {
+            if (CGRectIntersectsRect(bullet._sprite.boundingBox, enemy._sprite.boundingBox)) {
+                [enemyToDelete addObject:enemy];
+            }
+        }
+        
+        for (SDEnemy *enemy in enemyToDelete) {
+            [_enemys removeObject:enemy];
+            [self removeChild:enemy._sprite cleanup:YES];
+        }
+        
+        if (enemyToDelete.count > 0) {
+            [bulletsToDelete addObject:bullet];
+        }
+        [enemyToDelete release];
+    }
+    
+    for (SDBullet *bullet in bulletsToDelete) {
+        [_player._projectiles removeObject:bullet];
+        [self removeChild:bullet._sprite cleanup:YES];
+    }
+    [bulletsToDelete release];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
     CGPoint location = [self convertTouchToNodeSpace:touch];
-    SDBullet *bullet = [[SDBullet alloc] initWithPosition:_player._sprite.position andDestination:location];
+    SDBullet *bullet = [_player fire:_player._sprite.position andDestination:location];
     [self addChild:bullet._sprite];
     
 }
@@ -149,7 +192,9 @@
 	// in case you have something to dealloc, do it in this method
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
-	
+	[_enemys release];
+    _enemys = nil;
+    
 	// don't forget to call "super dealloc"
 	[super dealloc];
 }

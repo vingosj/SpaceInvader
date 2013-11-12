@@ -20,10 +20,12 @@
 {
     if(self = [super init])
     {
+        self._level = 1;
         self._dead = false;
         self._speed = 20.0;
-        self._fireRecovery = 0.8;
-        
+        self._fireRecovery = 300;
+        self._fireCountDown = 300;
+        self._projectiles = [[NSMutableArray alloc] init];
         [self initialSprite];
     }
     return self;
@@ -40,16 +42,50 @@
     //*the action of player
 }
 
-- (void)fire
+- (id)fire
 {
-    //*fire!
+    SDBullet *bullet = [[SDBullet alloc] initWithPosition:self._sprite.position
+                                                                    andArray:__projectiles];
+    [__projectiles addObject:bullet];
+    return bullet;
 }
 
-- (void)update
+- (id)fire:(CGPoint) point andDestination:(CGPoint)dest
+{
+    //*fire!
+    SDBullet *bullet = [[SDBullet alloc] initWithPosition:self._sprite.position
+                                           andDestination:dest andArray:__projectiles];
+    [__projectiles addObject:bullet];
+    return bullet;
+}
+
+- (void)levelup
+{
+    self._fireRecovery -= 5;
+    self._health++;
+    self._power++;
+    self._speed+=5;
+}
+
+- (void)update:(HelloWorldLayer *)layer
 {
     //*main loop of the player
+    if (self._fireCountDown == 1) {
+        SDBullet *bullet = [[SDBullet alloc] initWithPosition:self._sprite.position
+                                                     andArray:self._projectiles];
+        [layer addChild:bullet._sprite];
+        [self._projectiles addObject:bullet];
+        self._fireCountDown = self._fireRecovery;
+    } else {
+        self._fireCountDown--;
+    }
     
-    
+}
+
+- (void)dealloc
+{
+    [self._projectiles release];
+    [super dealloc];
 }
 
 @end

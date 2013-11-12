@@ -20,4 +20,10 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [self._sprite release];
+    [super dealloc];
+}
+
 @end

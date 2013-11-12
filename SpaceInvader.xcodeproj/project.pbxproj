@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A51671831830C08A00E1A207 /* GameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A51671821830C08A00E1A207 /* GameOverLayer.m */; };
 		A598C5B0182A151000D4238F /* monster-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = A598C5AA182A151000D4238F /* monster-hd.png */; };
 		A598C5B1182A151000D4238F /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = A598C5AB182A151000D4238F /* monster.png */; };
 		A598C5B2182A151000D4238F /* player-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = A598C5AC182A151000D4238F /* player-hd.png */; };
@@ -154,6 +155,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A51671811830C08A00E1A207 /* GameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverLayer.h; sourceTree = "<group>"; };
+		A51671821830C08A00E1A207 /* GameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverLayer.m; sourceTree = "<group>"; };
 		A598C5AA182A151000D4238F /* monster-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "monster-hd.png"; path = "../monster-hd.png"; sourceTree = "<group>"; };
 		A598C5AB182A151000D4238F /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = monster.png; path = ../monster.png; sourceTree = "<group>"; };
 		A598C5AC182A151000D4238F /* player-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "player-hd.png"; path = "../player-hd.png"; sourceTree = "<group>"; };
@@ -526,6 +529,8 @@
 				A598C5C0182A498A00D4238F /* SDEnemy.m */,
 				A5A3A1BB182B44D4005D6AB8 /* SDBullet.h */,
 				A5A3A1BC182B44D4005D6AB8 /* SDBullet.m */,
+				A51671811830C08A00E1A207 /* GameOverLayer.h */,
+				A51671821830C08A00E1A207 /* GameOverLayer.m */,
 			);
 			path = SpaceInvader;
 			sourceTree = "<group>";
@@ -1043,6 +1048,7 @@
 				A5A13A9A1829EEDA0035D2C7 /* mat3.c in Sources */,
 				A598C5C1182A498A00D4238F /* SDEnemy.m in Sources */,
 				A5A13AB41829EEDA0035D2C7 /* AppDelegate.m in Sources */,
+				A51671831830C08A00E1A207 /* GameOverLayer.m in Sources */,
 				A5A13A241829EED90035D2C7 /* CCES2Renderer.m in Sources */,
 				A5A139961829EED90035D2C7 /* CCLabelAtlas.m in Sources */,
 				A5A139B21829EED90035D2C7 /* CCParallaxNode.m in Sources */,

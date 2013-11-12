@@ -15,5 +15,6 @@
 @property (readonly) CGSize WindowSize;
 
 - (id)init;
+- (void)dealloc;
 
 @end

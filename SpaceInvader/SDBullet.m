@@ -10,7 +10,21 @@
 
 @implementation SDBullet
 
+- (id)initWithPosition:(CGPoint)point
+              andArray:(NSMutableArray *)array
+{
+    if (self = [super init]) {
+        self._power = 1;
+        self._speed = 60;
+        
+        [self initialSpriteWithPosition:point];
+        [self action:array];
+    }
+    return self;
+}
+
 - (id)initWithPosition:(CGPoint)point andDestination:(CGPoint)dest
+              andArray:(NSMutableArray *)array
 {
     if (self = [super init])
     {
@@ -18,7 +32,7 @@
         self._speed = 40;
         
         [self initialSpriteWithPosition:point];
-        [self action:ccpSub(point, dest)];
+        [self action:ccpSub(point, dest) andArray:array];
     }
     return self;
 }
@@ -30,7 +44,22 @@
     [self._sprite setPosition:point];
 }
 
-- (void)action:(CGPoint)offset
+- (void)action:(NSMutableArray *)array
+{
+    CGPoint realDest = ccp(self.WindowSize.width + self._sprite.contentSize.width/2,
+                           self._sprite.position.y);
+    float moveDuration = (realDest.x - self._sprite.position.x)/self._speed;
+    [self._sprite runAction:
+     [CCSequence actions:
+      [CCMoveTo actionWithDuration:moveDuration position:realDest],
+      [CCCallBlockN actionWithBlock:^(CCNode *node) {
+         [node removeFromParentAndCleanup:YES];
+         [array removeObject:self];
+     }],
+      nil]];
+}
+
+- (void)action:(CGPoint)offset andArray:(NSMutableArray *)array
 {
     CGPoint realDest;
     float moveDuration;
@@ -67,8 +96,14 @@
       [CCMoveTo actionWithDuration:moveDuration position:realDest],
       [CCCallBlockN actionWithBlock:^(CCNode *node) {
          [node removeFromParentAndCleanup:YES];
+         [array removeObject:self];
     }],
       nil]];
 }
 
+- (void)dealloc
+{
+    NSLog(@"release bullet");
+    [super dealloc];
+}
 @end

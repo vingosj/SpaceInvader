@@ -13,7 +13,7 @@
 @synthesize _health;
 @synthesize _shootCountDown;
 
-- (id)init
+- (id)initWithArray:(NSMutableArray *)array
 {
     if (self = [super init])
     {
@@ -23,7 +23,7 @@
         self._shootCountDown = self.FireRecovery;
         
         [self initialSprite];
-        [self action];
+        [self actionWithArray:array];
     }
     return self;
 }
@@ -38,12 +38,13 @@
     [self._sprite setPosition:ccp(self.WindowSize.width - self._sprite.contentSize.width/2, actualY)];
 }
 
-- (void)action
+- (void)actionWithArray:(NSMutableArray *)array
 {
     CCMoveTo *actionMove = [CCMoveTo actionWithDuration:4
                                                position:ccp(-self._sprite.contentSize.width/2, self._sprite.position.y)];
     CCCallBlockN *actionMoveDone = [CCCallBlockN actionWithBlock: ^(CCNode *node) {
         [node removeFromParentAndCleanup:YES];
+        [array removeObject:self];
     }];
     [self._sprite runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
 }
@@ -56,5 +57,11 @@
 - (void)update
 {
     //*enemy update here
+}
+
+- (void)dealloc
+{
+    NSLog(@"Dealloc enemy!");
+    [super dealloc];
 }
 @end

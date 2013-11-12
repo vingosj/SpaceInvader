@@ -15,11 +15,12 @@
 @property (readonly) int FireRecovery;
 @property (assign) float _power;
 
-- (id)init;
+- (id)initWithArray:(NSMutableArray *)array;
 - (void)initialSprite;
-- (void)action;
+- (void)actionWithArray:(NSMutableArray *)array;
 - (void)render;
 - (void)update;
+- (void)dealloc;
 
 
 @end

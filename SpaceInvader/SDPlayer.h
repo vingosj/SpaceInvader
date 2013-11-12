@@ -7,19 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SDEntity.h"
+#import "SDBullet.h"
+#import "HelloWorldLayer.h"
 
 @interface SDPlayer : SDEntity
 
+
+@property (assign) int _level;
 @property (assign) float _health;
 @property (assign) float _speed;
 @property (assign) BOOL _dead;
-@property (assign) float _fireRecovery;
+@property (assign) int _fireRecovery;
+@property (assign) int _fireCountDown;
 @property (assign) float _power;
+@property (assign) NSMutableArray *_projectiles;
+
 
 - (id)init;
 - (void)initialSprite;
 - (void)move;
-- (void)fire;
-- (void)update;
+- (id)fire:(CGPoint) point andDestination:(CGPoint)dest;
+- (void)update:(HelloWorldLayer *)layer;
+- (void)levelup;
+- (void)dealloc;
 @end

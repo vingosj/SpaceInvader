@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1DA97822-40A8-43E3-B003-72FA6CB93924</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SpaceInvader</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D6C0D74F-D561-4797-AA74-543C6CFD6400</key>
+		<string>http://github.com/vingosj/SpaceInvader.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SpaceInvader.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D6C0D74F-D561-4797-AA74-543C6CFD6400</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://github.com/vingosj/SpaceInvader.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D6C0D74F-D561-4797-AA74-543C6CFD6400</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D6C0D74F-D561-4797-AA74-543C6CFD6400</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SpaceInvader</string>
+		</dict>
+	</array>
+</dict>
+</plist>
