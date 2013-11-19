@@ -29,8 +29,7 @@
     if (self = [super init])
     {
         self._power = 1;
-        self._speed = 40;
-        
+        self._speed = 400;
         [self initialSpriteWithPosition:point];
         [self action:ccpSub(point, dest) andArray:array];
     }
@@ -57,13 +56,28 @@
          [array removeObject:self];
      }],
       nil]];
+    [self._sprite runAction:
+     [CCSequence actions:
+      [CCRotateTo actionWithDuration:moveDuration angle:1800*self._power],
+      [CCCallBlockN actionWithBlock:^(CCNode *node) {
+         [node removeFromParentAndCleanup:YES];
+         [array removeObject:self];
+     }],
+      nil]];
 }
 
 - (void)action:(CGPoint)offset andArray:(NSMutableArray *)array
 {
     CGPoint realDest;
     float moveDuration;
-    if (abs(offset.x/offset.y) >= 0.577)
+    //NSLog(@"%f", fabs(offset.x/offset.y));
+    float radius = sqrtf(self.WindowSize.width*self.WindowSize.width + self.WindowSize.height*self.WindowSize.height);
+    moveDuration = radius/self._speed;
+    float z = sqrtf(offset.x*offset.x+offset.y*offset.y);
+    float realX = self._sprite.position.x - radius*offset.x/z;
+    float realY = self._sprite.position.y - radius*offset.y/z;
+    realDest = ccp(realX, realY);
+    /*if (abs(offset.x/offset.y) >= )
     {
         int realX = self.WindowSize.width + (self._sprite.contentSize.width/2);
         float ratio = (float) offset.y / (float) offset.x;
@@ -80,6 +94,9 @@
     {
         //
         int realY = self.WindowSize.height + (self._sprite.contentSize.height/2);
+        //if (offset.y < 0)
+        //    realY = 0;
+        realY = 0;
         float ratio = (float) offset.x / (float) offset.y;
         int realX = (realY * ratio) + self._sprite.position.x;
         realDest = ccp(realX, realY);
@@ -89,7 +106,7 @@
         int offRealY = realY - self._sprite.position.y;
         float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
         moveDuration = length/self._speed;
-    }
+    }*/
     
     [self._sprite runAction:
      [CCSequence actions:
@@ -98,6 +115,14 @@
          [node removeFromParentAndCleanup:YES];
          [array removeObject:self];
     }],
+      nil]];
+    [self._sprite runAction:
+     [CCSequence actions:
+      [CCRotateTo actionWithDuration:moveDuration angle:1800*self._power],
+      [CCCallBlockN actionWithBlock:^(CCNode *node) {
+         [node removeFromParentAndCleanup:YES];
+         [array removeObject:self];
+     }],
       nil]];
 }
 
