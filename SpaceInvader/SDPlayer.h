@@ -6,10 +6,10 @@
 //  Copyright (c) 2013年 vingosj. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "SDBullet.h"
 #import "HelloWorldLayer.h"
 
+@class HelloWorldLayer;
 @interface SDPlayer : SDEntity
 
 
@@ -28,6 +28,7 @@
 - (void)move;
 - (id)fire:(CGPoint) point andDestination:(CGPoint)dest;
 - (void)update:(HelloWorldLayer *)layer;
+- (BOOL)shooted:(float) health;
 - (void)levelup;
 - (void)dealloc;
 @end

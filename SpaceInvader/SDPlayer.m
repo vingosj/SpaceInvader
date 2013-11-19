@@ -25,6 +25,7 @@
         self._speed = 20.0;
         self._fireRecovery = 300;
         self._fireCountDown = 300;
+        self._health = 100;
         self._projectiles = [[NSMutableArray alloc] init];
         [self initialSprite];
     }
@@ -57,6 +58,15 @@
                                            andDestination:dest andArray:__projectiles];
     [__projectiles addObject:bullet];
     return bullet;
+}
+
+- (BOOL)shooted:(float)health
+{
+    self._health -= health;
+    if (self._health <= 0) {
+        return false;
+    }
+    return true;
 }
 
 - (void)levelup

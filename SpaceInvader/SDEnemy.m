@@ -13,17 +13,19 @@
 @synthesize _health;
 @synthesize _shootCountDown;
 
-- (id)initWithArray:(NSMutableArray *)array
+- (id)initWithArray:(NSMutableArray *)array andLayer:(HelloWorldLayer *)layer
 {
     if (self = [super init])
     {
         //*init the enemy staff here
-        _FireRecovery = 8;
+        _FireRecovery = 60;
         self._health = 5;
+        self._hurt = 0;
         self._shootCountDown = self.FireRecovery;
+        self._projectiles = [[NSMutableArray alloc] init];
         
         [self initialSprite];
-        [self actionWithArray:array];
+        [self actionWithArray:array andLayer:layer];
     }
     return self;
 }
@@ -38,7 +40,7 @@
     [self._sprite setPosition:ccp(self.WindowSize.width - self._sprite.contentSize.width/2, actualY)];
 }
 
-- (void)actionWithArray:(NSMutableArray *)array
+- (void)actionWithArray:(NSMutableArray *)array andLayer:(HelloWorldLayer *)layer
 {
     CCMoveTo *actionMove = [CCMoveTo actionWithDuration:4
                                                position:ccp(-self._sprite.contentSize.width/2, self._sprite.position.y)];
@@ -46,19 +48,63 @@
         [node removeFromParentAndCleanup:YES];
         [array removeObject:self];
     }];
-    [self._sprite runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+    CCAction *sequence = [CCSequence actions:actionMove, actionMoveDone, nil];
+    sequence.tag = 1;
+    [self._sprite runAction:sequence];
+    [layer addChild:self._sprite];
+    [array addObject:self];
 }
+
+- (void)blink:(NSMutableArray *)array
+{
+    //ccColor3B oldColor = self._sprite.color;
+    //id tintAction
+    //id tintBack = [CCTintTo actionWithDuration:0.5 red:oldColor.r green:oldColor.g blue:oldColor.b];
+    //[self._sprite stopAllActions];
+    //id oldAction = [self._sprite getActionByTag:1];
+    CCAction *blinkAction = [CCBlink actionWithDuration:1 blinks:1];
+    [[[CCDirector sharedDirector] actionManager] addAction:blinkAction target:self._sprite paused:YES];
+    
+    //[[CCActionManager sharedManager] addAction:blinkAction target:self._sprite paused:NO];
+    //[self._sprite runAction:blinkAction];
+    //NSLog(@"here");
+}
+
+- (void)shooted:(float)power andArray:(NSMutableArray *)array
+{
+    self._health -= power;
+    if (self._health <= 0) {
+        [self explosion];
+    }
+    [self blink:array];
+}
+
 
 - (void)render
 {
     //*enemy render here
 }
 
-- (void)update
+- (void)explosion
 {
-    //*enemy update here
+    //*add explosion effects here
 }
 
+- (void)update:(HelloWorldLayer *)layer fireObject:(CGPoint)player
+{
+    //*main loop of the player
+    //NSLog(@"%d", self._shootCountDown);
+    if (self._shootCountDown == 1) {
+        SDBullet *bullet = [[SDBullet alloc] initWithPosition:self._sprite.position andDestination:player andArray:self._projectiles];
+        [layer addChild:bullet._sprite];
+        [self._projectiles addObject:bullet];
+        self._shootCountDown = self.FireRecovery;
+        NSLog(@"hehe enemy");
+    } else {
+        self._shootCountDown--;
+    }
+    
+}
 - (void)dealloc
 {
     NSLog(@"Dealloc enemy!");

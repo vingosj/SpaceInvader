@@ -14,9 +14,6 @@
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
-#import "SDPlayer.h"
-#import "SDEnemy.h"
-#import "SDBullet.h"
 
 
 
@@ -135,18 +132,18 @@
 
 - (void)gameLogic:(ccTime)dt
 {
-    //
-    SDEnemy *newEnemy = [[SDEnemy alloc] initWithArray:_enemys];
-    [self addChild:newEnemy._sprite];
-    [_enemys addObject:newEnemy];
-    NSLog(@"projectile number = %d",_player._projectiles.count);
-    NSLog(@"enemy number = %d",_enemys.count);
+    [[SDEnemy alloc] initWithArray:_enemys andLayer:self];
+    //NSLog(@"projectile number = %d",_player._projectiles.count);
+    //NSLog(@"enemy number = %d",_enemys.count);
 }
 
 - (void)update:(ccTime)delta
 {
     //* main loop update function
     [_player update:self];
+    for (SDEnemy *enemy in _enemys) {
+        [enemy update:self fireObject:_player._sprite.position];
+    }
     
     
     NSMutableArray *bulletsToDelete = [[NSMutableArray alloc] init];
@@ -155,12 +152,14 @@
         NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
         for (SDEnemy *enemy in _enemys) {
             if (CGRectIntersectsRect(bullet._sprite.boundingBox, enemy._sprite.boundingBox)) {
+                [enemy set_hurt:bullet._power];
                 [enemyToDelete addObject:enemy];
             }
         }
         
         for (SDEnemy *enemy in enemyToDelete) {
-            [_enemys removeObject:enemy];
+            //[_enemys removeObject:enemy];
+            [enemy shooted:enemy._hurt andArray:_enemys];
             [self removeChild:enemy._sprite cleanup:YES];
         }
         
@@ -173,6 +172,16 @@
     for (SDBullet *bullet in bulletsToDelete) {
         [_player._projectiles removeObject:bullet];
         [self removeChild:bullet._sprite cleanup:YES];
+        /*
+        CCParticleSun* explosion = [[CCParticleSun alloc]initWithTotalParticles:250];
+        explosion.autoRemoveOnFinish = YES;
+        explosion.startSize = 15.0f;
+        explosion.speed = 30.0f;
+        explosion.anchorPoint = ccp(0.5f,0.5f);
+        explosion.position = bullet._sprite.position;
+        explosion.duration = 1;
+        [self addChild:explosion];
+         */
     }
     [bulletsToDelete release];
 }
