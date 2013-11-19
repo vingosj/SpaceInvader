@@ -29,8 +29,7 @@
     if (self = [super init])
     {
         self._power = 1;
-        self._speed = 40;
-        
+        self._speed = 400;
         [self initialSpriteWithPosition:point];
         [self action:ccpSub(point, dest) andArray:array];
     }
@@ -52,6 +51,14 @@
     [self._sprite runAction:
      [CCSequence actions:
       [CCMoveTo actionWithDuration:moveDuration position:realDest],
+      [CCCallBlockN actionWithBlock:^(CCNode *node) {
+         [node removeFromParentAndCleanup:YES];
+         [array removeObject:self];
+     }],
+      nil]];
+    [self._sprite runAction:
+     [CCSequence actions:
+      [CCRotateTo actionWithDuration:moveDuration angle:1800*self._power],
       [CCCallBlockN actionWithBlock:^(CCNode *node) {
          [node removeFromParentAndCleanup:YES];
          [array removeObject:self];
@@ -104,6 +111,14 @@
     [self._sprite runAction:
      [CCSequence actions:
       [CCMoveTo actionWithDuration:moveDuration position:realDest],
+      [CCCallBlockN actionWithBlock:^(CCNode *node) {
+         [node removeFromParentAndCleanup:YES];
+         [array removeObject:self];
+     }],
+      nil]];
+    [self._sprite runAction:
+     [CCSequence actions:
+      [CCRotateTo actionWithDuration:moveDuration angle:1800*self._power],
       [CCCallBlockN actionWithBlock:^(CCNode *node) {
          [node removeFromParentAndCleanup:YES];
          [array removeObject:self];
