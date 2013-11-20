@@ -166,6 +166,11 @@
 		A5F8F321183CC3C500798936 /* enemy3.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F31E183CC3C500798936 /* enemy3.png */; };
 		A5F8F322183CC3C500798936 /* enemy4.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F31F183CC3C500798936 /* enemy4.png */; };
 		A5F8F323183CC3C500798936 /* enemy5.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F320183CC3C500798936 /* enemy5.png */; };
+		A5F8F32D183CC8E800798936 /* CCNodeAdornments.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F8F326183CC8E800798936 /* CCNodeAdornments.m */; };
+		A5F8F32E183CC8E800798936 /* CCNodeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F8F328183CC8E800798936 /* CCNodeExtensions.m */; };
+		A5F8F32F183CC8E800798936 /* dpad.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F329183CC8E800798936 /* dpad.png */; };
+		A5F8F330183CC8E800798936 /* Joystick.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F8F32B183CC8E800798936 /* Joystick.m */; };
+		A5F8F331183CC8E800798936 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F32C183CC8E800798936 /* joystick.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -480,6 +485,14 @@
 		A5F8F31E183CC3C500798936 /* enemy3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy3.png; sourceTree = "<group>"; };
 		A5F8F31F183CC3C500798936 /* enemy4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy4.png; sourceTree = "<group>"; };
 		A5F8F320183CC3C500798936 /* enemy5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy5.png; sourceTree = "<group>"; };
+		A5F8F325183CC8E800798936 /* CCNodeAdornments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNodeAdornments.h; sourceTree = "<group>"; };
+		A5F8F326183CC8E800798936 /* CCNodeAdornments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNodeAdornments.m; sourceTree = "<group>"; };
+		A5F8F327183CC8E800798936 /* CCNodeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNodeExtensions.h; sourceTree = "<group>"; };
+		A5F8F328183CC8E800798936 /* CCNodeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNodeExtensions.m; sourceTree = "<group>"; };
+		A5F8F329183CC8E800798936 /* dpad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dpad.png; sourceTree = "<group>"; };
+		A5F8F32A183CC8E800798936 /* Joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Joystick.h; sourceTree = "<group>"; };
+		A5F8F32B183CC8E800798936 /* Joystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Joystick.m; sourceTree = "<group>"; };
+		A5F8F32C183CC8E800798936 /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -559,6 +572,7 @@
 				A5A3A1BC182B44D4005D6AB8 /* SDBullet.m */,
 				A51671811830C08A00E1A207 /* GameOverLayer.h */,
 				A51671821830C08A00E1A207 /* GameOverLayer.m */,
+				A5F8F324183CC8A700798936 /* Joystick */,
 			);
 			path = SpaceInvader;
 			sourceTree = "<group>";
@@ -964,6 +978,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A5F8F324183CC8A700798936 /* Joystick */ = {
+			isa = PBXGroup;
+			children = (
+				A5F8F325183CC8E800798936 /* CCNodeAdornments.h */,
+				A5F8F326183CC8E800798936 /* CCNodeAdornments.m */,
+				A5F8F327183CC8E800798936 /* CCNodeExtensions.h */,
+				A5F8F328183CC8E800798936 /* CCNodeExtensions.m */,
+				A5F8F329183CC8E800798936 /* dpad.png */,
+				A5F8F32A183CC8E800798936 /* Joystick.h */,
+				A5F8F32B183CC8E800798936 /* Joystick.m */,
+				A5F8F32C183CC8E800798936 /* joystick.png */,
+			);
+			name = Joystick;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1026,9 +1055,11 @@
 				A5F8F31B183CC23F00798936 /* ButtonStar.png in Resources */,
 				A5F8F2FD183C7C6B00798936 /* Default-568h@2x.png in Resources */,
 				A598C5B5182A151000D4238F /* projectile.png in Resources */,
+				A5F8F331183CC8E800798936 /* joystick.png in Resources */,
 				A598C5B0182A151000D4238F /* monster-hd.png in Resources */,
 				A5A139301829EED80035D2C7 /* Icon-Small.png in Resources */,
 				A5F8F30B183CB03B00798936 /* enemy3.plist in Resources */,
+				A5F8F32F183CC8E800798936 /* dpad.png in Resources */,
 				A5F8F2F9183C7B5800798936 /* enemy2.plist in Resources */,
 				A5F8F317183CB94D00798936 /* ships1.plist in Resources */,
 				A5F8F323183CC3C500798936 /* enemy5.png in Resources */,
@@ -1100,6 +1131,7 @@
 				A5A13A4C1829EED90035D2C7 /* CCProfiling.m in Sources */,
 				A5A139E31829EED90035D2C7 /* CCShaderCache.m in Sources */,
 				A5A139E91829EED90035D2C7 /* CCSprite.m in Sources */,
+				A5F8F32E183CC8E800798936 /* CCNodeExtensions.m in Sources */,
 				A5A139901829EED90035D2C7 /* CCGrabber.m in Sources */,
 				A5A13A9A1829EEDA0035D2C7 /* mat3.c in Sources */,
 				A598C5C1182A498A00D4238F /* SDEnemy.m in Sources */,
@@ -1139,7 +1171,9 @@
 				A5A13A071829EED90035D2C7 /* CCTMXObjectGroup.m in Sources */,
 				A5A13A691829EED90035D2C7 /* CDAudioManager.m in Sources */,
 				A5A13A161829EED90035D2C7 /* CCTransitionProgress.m in Sources */,
+				A5F8F32D183CC8E800798936 /* CCNodeAdornments.m in Sources */,
 				A5A13A391829EED90035D2C7 /* CCGLView.m in Sources */,
+				A5F8F330183CC8E800798936 /* Joystick.m in Sources */,
 				A5A13A6D1829EED90035D2C7 /* CDOpenALSupport.m in Sources */,
 				A5A139501829EED80035D2C7 /* CCActionInstant.m in Sources */,
 				A5A139711829EED80035D2C7 /* CCClippingNode.m in Sources */,

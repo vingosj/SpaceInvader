@@ -17,6 +17,7 @@
 
 
 
+
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
@@ -26,6 +27,7 @@
     CCLabelTTF *scorelabel;
     CCLabelTTF *_label;
     NSMutableArray *_enemys;
+    Joystick *_joystick;
 }
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -61,6 +63,16 @@
      @"enemy5.plist"];
 }
 
+-(void) initJoystick
+{
+    CCSprite* jsThumb = [CCSprite spriteWithFile: @"joystick.png"];
+    CCSprite* jsBackdrop = [CCSprite spriteWithFile: @"dpad.png"];
+    _joystick = [Joystick joystickWithThumb: jsThumb
+                               andBackdrop: jsBackdrop];
+    _joystick.position = ccp(20, 20);
+    [self addChild:_joystick z:1000];
+}
+
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -86,6 +98,7 @@
         
         
         [self setTouchEnabled:YES];
+        [self initJoystick];
         [self schedule:@selector(update:)];
         
         
@@ -129,7 +142,7 @@
         starMenuItem.position = ccp(60, 60);
         CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
         starMenu.position = CGPointZero;
-        [self addChild:starMenu z:1];
+        //[self addChild:starMenu z:1];
 		
 		//
 		// Leaderboards and Achievements
@@ -192,6 +205,12 @@
 
 - (void)update:(ccTime)delta
 {
+    //*move follow the joystick
+    if (_joystick.velocity.x!=0 || _joystick.velocity.y!=0 ){
+        [_player move:ccp(_joystick.velocity.x, _joystick.velocity.y)];
+    }
+    
+    
     //* main loop update function
     [_player update:self];
     for (SDEnemy *enemy in _enemys) {

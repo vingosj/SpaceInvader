@@ -58,9 +58,12 @@
     //[self._sprite setPosition:ccp(self._sprite.contentSize.width/2, self.WindowSize.height/2)];
 }
 
-- (void)move
+- (void)move:(CGPoint)direction
 {
     //*the action of player
+    [self._sprite setPosition:ccp(
+                                  self._sprite.position.x + self._speed * direction.x,
+                                  self._sprite.position.y + self._speed * direction.y)];
 }
 
 - (id)fire

@@ -27,7 +27,7 @@
 
 - (id)initWithLayer:(HelloWorldLayer *)layer;
 - (void)initialSprite;
-- (void)move;
+- (void)move:(CGPoint)direction;
 - (id)fire:(CGPoint) point andDestination:(CGPoint)dest;
 - (void)update:(HelloWorldLayer *)layer;
 - (BOOL)shooted:(float) health;

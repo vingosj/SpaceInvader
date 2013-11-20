@@ -13,6 +13,9 @@
 #import "cocos2d.h"
 #import "SDPlayer.h"
 #import "SDEnemy.h"
+#import "Joystick.h"
+#import "CCNodeAdornments.h"
+#import "CCNodeExtensions.h"
 
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayerColor <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
