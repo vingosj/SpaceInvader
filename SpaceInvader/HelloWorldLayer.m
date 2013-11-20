@@ -22,6 +22,9 @@
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer {
     SDPlayer *_player;
+    int score;
+    CCLabelTTF *scorelabel;
+    CCLabelTTF *_label;
     NSMutableArray *_enemys;
 }
 
@@ -91,18 +94,42 @@
         //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:<#(NSString *)#>];
         
         // create and initialize a Label
-		//CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
+        score = 0;
+        scorelabel = [CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:12];
+        [scorelabel setString: [NSString stringWithFormat:@"Score: %d",score]];
 
 		// ask director for the window size
-		//CGSize size = [[CCDirector sharedDirector] winSize];
-	
 		// position the label on the center of the screen
-		//label.position =  ccp( size.width /2 , size.height/2 );
+		scorelabel.position =  ccp( 100 , 100 );
 		
 		// add the label as a child to this Layer
-		//[self addChild: label];
 		
+        CCProgressTimer* powerBar= [CCProgressTimer progressWithSprite:[CCSprite spriteWithFile:@"fullbar.png"]];
+        powerBar.type = kCCProgressTimerTypeBar;
+        powerBar.midpoint = ccp(0,0); // starts from left
+        powerBar.barChangeRate = ccp(1,0); // grow only in the "x"-horizontal direction
+        powerBar.percentage = 100; // (0 - 100)
+        powerBar.position = ccp(190, 100);
+        [scorelabel addChild:powerBar z:1];
 		
+        [self addChild: scorelabel z:1];
+        
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
+        
+        // Create a label for display purposes
+        _label = [CCLabelTTF labelWithString:@"Test" fontName:@"Marker Felt" fontSize:12];
+        _label.position = ccp(winSize.width/2,
+                              winSize.height-(_label.contentSize.height/2));
+        [self addChild:_label z:1];
+        
+        // Standard method to create a button
+        CCMenuItem *starMenuItem = [CCMenuItemImage
+                                    itemWithNormalImage:@"ButtonStar.png" selectedImage:@"ButtonStarSel.png"
+                                    target:self selector:@selector(starButtonTapped:)];
+        starMenuItem.position = ccp(60, 60);
+        CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
+        starMenu.position = CGPointZero;
+        [self addChild:starMenu z:1];
 		
 		//
 		// Leaderboards and Achievements
@@ -180,6 +207,11 @@
             if (CGRectIntersectsRect(bullet._sprite.boundingBox, enemy._sprite.boundingBox)) {
                 [enemy hurt:bullet._power];
                 [enemyToDelete addObject:enemy];
+                if (enemy._health == 0)
+                {
+                    score++;
+                    [scorelabel setString: [NSString stringWithFormat:@"Score: %d",score]];
+                }
             }
         }
         
@@ -219,6 +251,10 @@
 	// cocos2d will automatically release all the children (Label)
 	[_enemys release];
     _enemys = nil;
+    [_label release];
+    _label = nil;
+    [scorelabel release];
+    scorelabel = nil;
     
 	// don't forget to call "super dealloc"
 	[super dealloc];
@@ -236,5 +272,8 @@
 {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 	[[app navController] dismissModalViewControllerAnimated:YES];
+}
+-(void)starButtonTapped:(id)sender {
+    [_label setString:@"Last button: *"];
 }
 @end
