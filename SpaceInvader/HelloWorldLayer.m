@@ -41,6 +41,23 @@
 	return scene;
 }
 
+- (void)loadResource
+{
+    //* load resources here
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+     @"ships1.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+     @"enemy1.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+     @"enemy2.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+     @"enemy3.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+     @"enemy4.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+     @"enemy5.plist"];
+}
+
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -54,10 +71,7 @@
         [background setPosition:ccp(wSize.width/2, wSize.height/2)];
         [self addChild:background z:-1];
         
-        //[[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
-        // @"enemy1_default.plist"];
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
-         @"enemy2.plist"];
+        [self loadResource];
         _player = [[SDPlayer alloc] initWithLayer:self];
         //_enemy = [[SDEnemy alloc] init];
         //CCSprite *player = [CCSprite spriteWithFile:@"player.png"];

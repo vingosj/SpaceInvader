@@ -4,117 +4,79 @@
 <dict>
 	<key>frames</key>
 	<dict>
-		<key>e2_1.png</key>
+		<key>ships1_1.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
 			<key>spriteColorRect</key>
-			<string>{{0, 5}, {40, 30}}</string>
+			<string>{{0, 5}, {64, 29}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{40, 30}</string>
+			<string>{64, 29}</string>
 			<key>spriteSourceSize</key>
-			<string>{40, 40}</string>
+			<string>{64, 29}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{0, 0}, {40, 30}}</string>
+			<string>{{0, 0}, {64, 29}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>e2_2.png</key>
+		<key>ships1_2.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
 			<key>spriteColorRect</key>
-			<string>{{0, 5}, {40, 30}}</string>
+			<string>{{0, 5}, {64, 29}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{40, 30}</string>
+			<string>{64, 29}</string>
 			<key>spriteSourceSize</key>
-			<string>{40, 40}</string>
+			<string>{64, 29}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{0, 30}, {40, 30}}</string>
+			<string>{{0, 29}, {64, 29}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>e2_3.png</key>
+		<key>ships1_3.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
 			<key>spriteColorRect</key>
-			<string>{{0, 4}, {40, 30}}</string>
-			<key>spriteOffset</key>
-			<string>{0, 1}</string>
-			<key>spriteSize</key>
-			<string>{40, 30}</string>
-			<key>spriteSourceSize</key>
-			<string>{40, 40}</string>
-			<key>spriteTrimmed</key>
-			<true/>
-			<key>textureRect</key>
-			<string>{{0, 60}, {40, 30}}</string>
-			<key>textureRotated</key>
-			<false/>
-		</dict>
-		<key>e2_4.png</key>
-		<dict>
-			<key>aliases</key>
-			<array/>
-			<key>spriteColorRect</key>
-			<string>{{0, 5}, {40, 30}}</string>
+			<string>{{0, 5}, {64, 29}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{40, 30}</string>
+			<string>{64, 29}</string>
 			<key>spriteSourceSize</key>
-			<string>{40, 40}</string>
+			<string>{64, 29}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{0, 90}, {40, 30}}</string>
+			<string>{{0, 58}, {64, 29}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
-		<key>e2_5.png</key>
+		<key>ships1_4.png</key>
 		<dict>
 			<key>aliases</key>
 			<array/>
 			<key>spriteColorRect</key>
-			<string>{{0, 4}, {40, 30}}</string>
-			<key>spriteOffset</key>
-			<string>{0, 1}</string>
-			<key>spriteSize</key>
-			<string>{40, 30}</string>
-			<key>spriteSourceSize</key>
-			<string>{40, 40}</string>
-			<key>spriteTrimmed</key>
-			<true/>
-			<key>textureRect</key>
-			<string>{{0, 120}, {40, 30}}</string>
-			<key>textureRotated</key>
-			<false/>
-		</dict>
-		<key>e2_6.png</key>
-		<dict>
-			<key>aliases</key>
-			<array/>
-			<key>spriteColorRect</key>
-			<string>{{0, 5}, {40, 30}}</string>
+			<string>{{0, 5}, {64, 29}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{40, 30}</string>
+			<string>{64, 29}</string>
 			<key>spriteSourceSize</key>
-			<string>{40, 40}</string>
+			<string>{64, 29}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{0, 150}, {40, 30}}</string>
+			<string>{{0, 87}, {64, 29}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -126,19 +88,19 @@
 		<key>format</key>
 		<integer>3</integer>
 		<key>size</key>
-		<string>{40,180}</string>
+		<string>{64, 116}</string>
 		<key>name</key>
 		<string>enemy1.zwd</string>
 		<key>target</key>
 		<dict>
 			<key>name</key>
-			<string>default</string>
+			<string>ships1</string>
 			<key>textureFileName</key>
-			<string>enemy2</string>
+			<string>ships1</string>
 			<key>textureFileExtension</key>
 			<string>.png</string>
 			<key>coordinatesFileName</key>
-			<string>enemy2</string>
+			<string>ships1</string>
 			<key>coordinatesFileExtension</key>
 			<string>.plist</string>
 			<key>premultipliedAlpha</key>

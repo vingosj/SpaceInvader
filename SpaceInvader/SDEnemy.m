@@ -24,7 +24,29 @@
         self._shootCountDown = self.FireRecovery;
         self._projectiles = [[NSMutableArray alloc] init];
         
+        int value = (arc4random() % 5) + 1;
+        self._spriteBatch = [CCSpriteBatchNode batchNodeWithFile:
+                             [NSString stringWithFormat:@"enemy%d.png", value]];
+        [layer addChild:self._spriteBatch];
+        
+        NSMutableArray *walkAnimFrames = [NSMutableArray array];
+        for(int i =1; i <=6; ++i) {
+            [walkAnimFrames addObject:
+             [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+              [NSString stringWithFormat:@"e%d_%d.png", value, i]]];
+        }
+        CCAnimation *walkAnim = [CCAnimation
+                                 animationWithSpriteFrames:walkAnimFrames delay:0.1f];
+        self._sprite = [CCSprite spriteWithSpriteFrameName:
+                        [NSString stringWithFormat:@"e%d_1.png", value]];
+        //*position
+        //[self._sprite setPosition:ccp(self._sprite.contentSize.width/2, self.WindowSize.height/2)];
         [self initialSprite];
+        self._moveAction = [CCRepeatForever actionWithAction:
+                            [CCAnimate actionWithAnimation:walkAnim]];
+        [self._sprite runAction:self._moveAction];
+        [self._spriteBatch addChild:self._sprite];
+        
         [self actionWithArray:array andLayer:layer];
     }
     return self;
@@ -32,7 +54,7 @@
 
 - (void)initialSprite
 {
-    self._sprite = [[CCSprite alloc] initWithFile:@"monster.png"];
+    //self._sprite = [[CCSprite alloc] initWithFile:@"monster.png"];
     int minY = self._sprite.contentSize.height / 2;
     int maxY = self.WindowSize.height - self._sprite.contentSize.height/2;
     int rangeY = maxY - minY;
@@ -51,7 +73,7 @@
     CCAction *sequence = [CCSequence actions:actionMove, actionMoveDone, nil];
     sequence.tag = 1;
     [self._sprite runAction:sequence];
-    [layer addChild:self._sprite];
+    //[layer addChild:self._sprite];
     [array addObject:self];
 }
 
@@ -62,7 +84,7 @@
     //id tintBack = [CCTintTo actionWithDuration:0.5 red:oldColor.r green:oldColor.g blue:oldColor.b];
     //[self._sprite stopAllActions];
     //id oldAction = [self._sprite getActionByTag:1];
-    CCAction *blinkAction = [CCBlink actionWithDuration:1 blinks:1];
+    CCAction *blinkAction = [CCBlink actionWithDuration:0.2 blinks:1];
     [[[CCDirector sharedDirector] actionManager] addAction:blinkAction target:self._sprite paused:YES];
     
     //[[CCActionManager sharedManager] addAction:blinkAction target:self._sprite paused:NO];
@@ -114,7 +136,7 @@
         [layer addChild:bullet._sprite];
         [self._projectiles addObject:bullet];
         self._shootCountDown = self.FireRecovery;
-        NSLog(@"hehe enemy");
+        //NSLog(@"hehe enemy");
     } else {
         self._shootCountDown--;
     }
@@ -122,6 +144,8 @@
 }
 - (void)dealloc
 {
+    //[self._sprite release];
+    [self._projectiles release];
     NSLog(@"Dealloc enemy!");
     [super dealloc];
 }

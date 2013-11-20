@@ -14,11 +14,12 @@
 @interface SDEnemy : SDEntity
 
 @property (assign) float _health;
-//@property (assign) float _hurt;
 @property (assign) int _shootCountDown;
 @property (readonly) int FireRecovery;
 @property (assign) float _power;
 @property (assign) NSMutableArray *_projectiles;
+@property (nonatomic, strong) CCSpriteBatchNode *_spriteBatch;
+@property (nonatomic, retain) CCAction *_moveAction;
 
 - (id)initWithArray:(NSMutableArray *)array andLayer:(HelloWorldLayer *)layer;
 - (void)initialSprite;
