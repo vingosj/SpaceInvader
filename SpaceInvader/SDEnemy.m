@@ -114,7 +114,6 @@
         [layer addChild:bullet._sprite];
         [self._projectiles addObject:bullet];
         self._shootCountDown = self.FireRecovery;
-        NSLog(@"hehe enemy");
     } else {
         self._shootCountDown--;
     }
