@@ -14,7 +14,7 @@
 @interface SDEnemy : SDEntity
 
 @property (assign) float _health;
-@property (assign) float _hurt;
+//@property (assign) float _hurt;
 @property (assign) int _shootCountDown;
 @property (readonly) int FireRecovery;
 @property (assign) float _power;
@@ -24,9 +24,10 @@
 - (void)initialSprite;
 - (void)actionWithArray:(NSMutableArray *)array andLayer:(HelloWorldLayer *)layer;
 - (void)blink:(NSMutableArray *)array;
-- (void)shooted:(float)power andArray:(NSMutableArray *)array;
+- (void)shooted:(HelloWorldLayer *)layer andArray:(NSMutableArray *)array;
+- (void)hurt:(float)power;
 - (void)render;
-- (void)explosion;
+- (void)explosion:(HelloWorldLayer *)layer;
 - (void)update:(HelloWorldLayer *)layer fireObject:(CGPoint)player;
 - (void)dealloc;
 

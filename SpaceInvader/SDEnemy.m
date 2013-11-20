@@ -20,7 +20,7 @@
         //*init the enemy staff here
         _FireRecovery = 60;
         self._health = 5;
-        self._hurt = 0;
+        //self._hurt = 0;
         self._shootCountDown = self.FireRecovery;
         self._projectiles = [[NSMutableArray alloc] init];
         
@@ -70,23 +70,38 @@
     //NSLog(@"here");
 }
 
-- (void)shooted:(float)power andArray:(NSMutableArray *)array
+- (void)shooted:(HelloWorldLayer *)layer andArray:(NSMutableArray *)array
 {
+    if (self._health <= 0) {
+        [array removeObject:self];
+        [self explosion:layer];
+    }
+    else
+    {
+        [self blink:array];
+    }
+    /*
     self._health -= power;
     if (self._health <= 0) {
         [self explosion];
     }
     [self blink:array];
+     */
 }
 
+- (void)hurt:(float)power
+{
+    [self set_health:(self._health - power)];
+}
 
 - (void)render
 {
     //*enemy render here
 }
 
-- (void)explosion
+- (void)explosion:(HelloWorldLayer *)layer
 {
+    [layer removeChild:self._sprite cleanup:YES];
     //*add explosion effects here
 }
 

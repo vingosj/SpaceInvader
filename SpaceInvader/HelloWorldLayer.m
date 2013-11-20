@@ -46,13 +46,23 @@
 {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
-	if( (self=[super initWithColor:ccc4(255, 255, 255, 255)]) ) {
+	if( (self=[super init]) ) {
+        //UIViewControllerBasedStatusBarAppearance = NO;
         
-        _player = [[SDPlayer alloc] init];
+        CCSprite *background = [[CCSprite alloc] initWithFile:@"farback.gif"];
+        CGSize wSize = [CCDirector sharedDirector].winSize;
+        [background setPosition:ccp(wSize.width/2, wSize.height/2)];
+        [self addChild:background z:-1];
+        
+        //[[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+        // @"enemy1_default.plist"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+         @"enemy2.plist"];
+        _player = [[SDPlayer alloc] initWithLayer:self];
         //_enemy = [[SDEnemy alloc] init];
         //CCSprite *player = [CCSprite spriteWithFile:@"player.png"];
         //player.position = ccp(200, 200);
-		[self addChild:_player._sprite];
+		//[self addChild:_player._sprite];
         //[self addChild:_enemy._sprite];
         [self schedule:@selector(gameLogic:) interval:1.0];
 		_enemys = [[NSMutableArray alloc] init];
@@ -60,6 +70,8 @@
         
         [self setTouchEnabled:YES];
         [self schedule:@selector(update:)];
+        
+        
         
         //*add backgroud music here
         //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:<#(NSString *)#>];
@@ -152,15 +164,15 @@
         NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
         for (SDEnemy *enemy in _enemys) {
             if (CGRectIntersectsRect(bullet._sprite.boundingBox, enemy._sprite.boundingBox)) {
-                [enemy set_hurt:bullet._power];
+                [enemy hurt:bullet._power];
                 [enemyToDelete addObject:enemy];
             }
         }
         
         for (SDEnemy *enemy in enemyToDelete) {
             //[_enemys removeObject:enemy];
-            [enemy shooted:enemy._hurt andArray:_enemys];
-            [self removeChild:enemy._sprite cleanup:YES];
+            [enemy shooted:self andArray:_enemys];
+            //[self removeChild:enemy._sprite cleanup:YES];
         }
         
         if (enemyToDelete.count > 0) {
@@ -172,16 +184,6 @@
     for (SDBullet *bullet in bulletsToDelete) {
         [_player._projectiles removeObject:bullet];
         [self removeChild:bullet._sprite cleanup:YES];
-        /*
-        CCParticleSun* explosion = [[CCParticleSun alloc]initWithTotalParticles:250];
-        explosion.autoRemoveOnFinish = YES;
-        explosion.startSize = 15.0f;
-        explosion.speed = 30.0f;
-        explosion.anchorPoint = ccp(0.5f,0.5f);
-        explosion.position = bullet._sprite.position;
-        explosion.duration = 1;
-        [self addChild:explosion];
-         */
     }
     [bulletsToDelete release];
 }

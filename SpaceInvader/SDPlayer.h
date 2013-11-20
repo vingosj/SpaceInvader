@@ -20,10 +20,12 @@
 @property (assign) int _fireRecovery;
 @property (assign) int _fireCountDown;
 @property (assign) float _power;
+@property (nonatomic, strong) CCSpriteBatchNode *_spriteBatch;
 @property (assign) NSMutableArray *_projectiles;
+@property (nonatomic, retain) CCAction *_moveAction;
 
 
-- (id)init;
+- (id)initWithLayer:(HelloWorldLayer *)layer;
 - (void)initialSprite;
 - (void)move;
 - (id)fire:(CGPoint) point andDestination:(CGPoint)dest;
