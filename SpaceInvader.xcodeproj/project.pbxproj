@@ -153,9 +153,6 @@
 		A5F8F2F9183C7B5800798936 /* enemy2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F2F8183C7B5800798936 /* enemy2.plist */; };
 		A5F8F2FB183C7B7300798936 /* enemy2.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F2FA183C7B7300798936 /* enemy2.png */; };
 		A5F8F2FD183C7C6B00798936 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F2FC183C7C6B00798936 /* Default-568h@2x.png */; };
-		A5F8F301183CA25B00798936 /* enemy3.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F2FE183CA25B00798936 /* enemy3.png */; };
-		A5F8F302183CA25B00798936 /* enemy4.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F2FF183CA25B00798936 /* enemy4.png */; };
-		A5F8F303183CA25B00798936 /* enemy5.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F300183CA25B00798936 /* enemy5.png */; };
 		A5F8F30B183CB03B00798936 /* enemy3.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F30A183CB03B00798936 /* enemy3.plist */; };
 		A5F8F30D183CB0A100798936 /* enemy4.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F30C183CB0A100798936 /* enemy4.plist */; };
 		A5F8F30F183CB0E700798936 /* enemy5.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F30E183CB0E700798936 /* enemy5.plist */; };
@@ -166,6 +163,9 @@
 		A5F8F319183CC23700798936 /* ButtonStarSel.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F318183CC23700798936 /* ButtonStarSel.png */; };
 		A5F8F31B183CC23F00798936 /* ButtonStar.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F31A183CC23F00798936 /* ButtonStar.png */; };
 		A5F8F31D183CC24A00798936 /* fullbar.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F31C183CC24A00798936 /* fullbar.png */; };
+		A5F8F321183CC3C500798936 /* enemy3.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F31E183CC3C500798936 /* enemy3.png */; };
+		A5F8F322183CC3C500798936 /* enemy4.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F31F183CC3C500798936 /* enemy4.png */; };
+		A5F8F323183CC3C500798936 /* enemy5.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F320183CC3C500798936 /* enemy5.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -467,9 +467,6 @@
 		A5F8F2F8183C7B5800798936 /* enemy2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy2.plist; sourceTree = "<group>"; };
 		A5F8F2FA183C7B7300798936 /* enemy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy2.png; sourceTree = "<group>"; };
 		A5F8F2FC183C7C6B00798936 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		A5F8F2FE183CA25B00798936 /* enemy3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy3.png; path = "../../../../Downloads/Gamedevtuts_Free_Shmup_Sprites/Enemy/Hue Shifted/enemy3.png"; sourceTree = "<group>"; };
-		A5F8F2FF183CA25B00798936 /* enemy4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy4.png; path = "../../../../Downloads/Gamedevtuts_Free_Shmup_Sprites/Enemy/Hue Shifted/enemy4.png"; sourceTree = "<group>"; };
-		A5F8F300183CA25B00798936 /* enemy5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy5.png; path = "../../../../Downloads/Gamedevtuts_Free_Shmup_Sprites/Enemy/Hue Shifted/enemy5.png"; sourceTree = "<group>"; };
 		A5F8F30A183CB03B00798936 /* enemy3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy3.plist; sourceTree = "<group>"; };
 		A5F8F30C183CB0A100798936 /* enemy4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy4.plist; sourceTree = "<group>"; };
 		A5F8F30E183CB0E700798936 /* enemy5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = enemy5.plist; sourceTree = "<group>"; };
@@ -480,6 +477,9 @@
 		A5F8F318183CC23700798936 /* ButtonStarSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonStarSel.png; sourceTree = "<group>"; };
 		A5F8F31A183CC23F00798936 /* ButtonStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonStar.png; sourceTree = "<group>"; };
 		A5F8F31C183CC24A00798936 /* fullbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullbar.png; sourceTree = "<group>"; };
+		A5F8F31E183CC3C500798936 /* enemy3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy3.png; sourceTree = "<group>"; };
+		A5F8F31F183CC3C500798936 /* enemy4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy4.png; sourceTree = "<group>"; };
+		A5F8F320183CC3C500798936 /* enemy5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy5.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -566,6 +566,9 @@
 		A5A139221829EED80035D2C7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5F8F31E183CC3C500798936 /* enemy3.png */,
+				A5F8F31F183CC3C500798936 /* enemy4.png */,
+				A5F8F320183CC3C500798936 /* enemy5.png */,
 				A5F8F31C183CC24A00798936 /* fullbar.png */,
 				A5F8F31A183CC23F00798936 /* ButtonStar.png */,
 				A5F8F318183CC23700798936 /* ButtonStarSel.png */,
@@ -577,9 +580,6 @@
 				A5F8F30C183CB0A100798936 /* enemy4.plist */,
 				A5F8F30A183CB03B00798936 /* enemy3.plist */,
 				A5F8F2FC183C7C6B00798936 /* Default-568h@2x.png */,
-				A5F8F2FE183CA25B00798936 /* enemy3.png */,
-				A5F8F2FF183CA25B00798936 /* enemy4.png */,
-				A5F8F300183CA25B00798936 /* enemy5.png */,
 				A5F8F2FA183C7B7300798936 /* enemy2.png */,
 				A5F8F2F8183C7B5800798936 /* enemy2.plist */,
 				A5F8F2F0183C58D000798936 /* f4.png */,
@@ -1015,11 +1015,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5F8F303183CA25B00798936 /* enemy5.png in Resources */,
 				A5F8F315183CB65800798936 /* ships1.png in Resources */,
 				A5F8F311183CB18900798936 /* enemy1.plist in Resources */,
 				A5F8F30F183CB0E700798936 /* enemy5.plist in Resources */,
-				A5F8F301183CA25B00798936 /* enemy3.png in Resources */,
 				A5A139341829EED80035D2C7 /* Icon.png in Resources */,
 				A5F8F31D183CC24A00798936 /* fullbar.png in Resources */,
 				A5F8F2FB183C7B7300798936 /* enemy2.png in Resources */,
@@ -1033,17 +1031,19 @@
 				A5F8F30B183CB03B00798936 /* enemy3.plist in Resources */,
 				A5F8F2F9183C7B5800798936 /* enemy2.plist in Resources */,
 				A5F8F317183CB94D00798936 /* ships1.plist in Resources */,
+				A5F8F323183CC3C500798936 /* enemy5.png in Resources */,
 				A5A1392C1829EED80035D2C7 /* Icon-72.png in Resources */,
+				A5F8F322183CC3C500798936 /* enemy4.png in Resources */,
 				A5A1392E1829EED80035D2C7 /* Icon-Small-50.png in Resources */,
 				A5A139391829EED80035D2C7 /* iTunesArtwork in Resources */,
 				A5A139321829EED80035D2C7 /* Icon-Small@2x.png in Resources */,
 				A598C5B3182A151000D4238F /* player.png in Resources */,
 				A5F8F2F1183C58D000798936 /* f4.png in Resources */,
 				A5F8F30D183CB0A100798936 /* enemy4.plist in Resources */,
-				A5F8F302183CA25B00798936 /* enemy4.png in Resources */,
 				A5F8F313183CB1B400798936 /* enemy1.png in Resources */,
 				A598C5B1182A151000D4238F /* monster.png in Resources */,
 				A5F8F2EF183C529800798936 /* farback.gif in Resources */,
+				A5F8F321183CC3C500798936 /* enemy3.png in Resources */,
 				A598C5B2182A151000D4238F /* player-hd.png in Resources */,
 				A5F8F319183CC23700798936 /* ButtonStarSel.png in Resources */,
 				A5A139361829EED80035D2C7 /* Icon@2x.png in Resources */,
