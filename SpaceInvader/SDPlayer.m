@@ -25,7 +25,7 @@
         self._speed = 20.0;
         self._fireRecovery = 300;
         self._fireCountDown = 300;
-        self._health = 100;
+        self._health = 5;
         self._projectiles = [[NSMutableArray alloc] init];
         //[self initialSprite];
         self._spriteBatch = [CCSpriteBatchNode batchNodeWithFile:@"ships1.png"];
@@ -47,6 +47,13 @@
         [self._sprite runAction:self._moveAction];
         [self._spriteBatch addChild:self._sprite];
         
+        
+        //* initial the bounds
+        _RightBound = self.WindowSize.width - self._sprite.contentSize.width/2;
+        _LeftBound = self._sprite.contentSize.width/2;
+        _UpBound = self.WindowSize.height - self._sprite.contentSize.height/2;
+        _DownBound = self._sprite.contentSize.height/2;
+        
     }
     return self;
 }
@@ -61,9 +68,27 @@
 - (void)move:(CGPoint)direction
 {
     //*the action of player
-    [self._sprite setPosition:ccp(
-                                  self._sprite.position.x + self._speed * direction.x,
-                                  self._sprite.position.y + self._speed * direction.y)];
+    int x = self._sprite.position.x + self._speed * direction.x;
+    int y = self._sprite.position.y + self._speed * direction.y;
+    if ( x > self.RightBound ) {
+        x = self.RightBound;
+    } else if ( x < self.LeftBound ) {
+        x = self.LeftBound;
+    }
+    
+    if ( y > self.UpBound ) {
+        y = self.UpBound;
+    } else if ( y < self.DownBound ) {
+        y = self.DownBound;
+    }
+    
+    [self._sprite setPosition:ccp(x, y)];
+}
+
+- (void)blink
+{
+    CCAction *blinkAction = [CCBlink actionWithDuration:0.2 blinks:1];
+    [[[CCDirector sharedDirector] actionManager] addAction:blinkAction target:self._sprite paused:YES];
 }
 
 - (id)fire
@@ -89,6 +114,7 @@
     if (self._health <= 0) {
         return false;
     }
+    [self blink];
     return true;
 }
 

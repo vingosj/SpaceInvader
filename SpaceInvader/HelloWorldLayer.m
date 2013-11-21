@@ -217,6 +217,19 @@
         [enemy update:self fireObject:_player._sprite.position];
     }
     
+    for (SDEnemy *enemy in _enemys) {
+        for (SDBullet *bullet in enemy._projectiles) {
+            if (CGRectIntersectsRect(_player._sprite.boundingBox, bullet._sprite.boundingBox)) {
+                if (![_player shooted:bullet._power]) {
+                    CCScene *gameOverScene = [GameOverLayer sceneWithWon:NO];
+                    [[CCDirector sharedDirector] replaceScene:gameOverScene];
+                }
+                [enemy._projectiles removeObject:bullet];
+                [self removeChild:bullet._sprite cleanup:YES];
+            }
+        }
+    }
+    
     
     NSMutableArray *bulletsToDelete = [[NSMutableArray alloc] init];
     for (SDBullet *bullet in _player._projectiles) {
@@ -251,6 +264,8 @@
         [self removeChild:bullet._sprite cleanup:YES];
     }
     [bulletsToDelete release];
+    
+    
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -269,11 +284,8 @@
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
 	[_enemys release];
-    _enemys = nil;
-    [_label release];
-    _label = nil;
-    [scorelabel release];
-    scorelabel = nil;
+    //[_label release];
+    //[scorelabel release];
     
 	// don't forget to call "super dealloc"
 	[super dealloc];

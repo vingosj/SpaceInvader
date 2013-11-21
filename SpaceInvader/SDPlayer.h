@@ -20,6 +20,10 @@
 @property (assign) int _fireRecovery;
 @property (assign) int _fireCountDown;
 @property (assign) float _power;
+@property (readonly) float UpBound;
+@property (readonly) float DownBound;
+@property (readonly) float LeftBound;
+@property (readonly) float RightBound;
 @property (nonatomic, strong) CCSpriteBatchNode *_spriteBatch;
 @property (assign) NSMutableArray *_projectiles;
 @property (nonatomic, retain) CCAction *_moveAction;
@@ -28,6 +32,7 @@
 - (id)initWithLayer:(HelloWorldLayer *)layer;
 - (void)initialSprite;
 - (void)move:(CGPoint)direction;
+- (void)blink;
 - (id)fire:(CGPoint) point andDestination:(CGPoint)dest;
 - (void)update:(HelloWorldLayer *)layer;
 - (BOOL)shooted:(float) health;
