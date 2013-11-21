@@ -27,6 +27,7 @@
     CCLabelTTF *scorelabel;
     CCLabelTTF *_label;
     NSMutableArray *_enemys;
+    NSMutableArray *_enemyProjectiles;
     Joystick *_joystick;
 }
 
@@ -95,6 +96,7 @@
         //[self addChild:_enemy._sprite];
         [self schedule:@selector(gameLogic:) interval:1.0];
 		_enemys = [[NSMutableArray alloc] init];
+        _enemyProjectiles = [[NSMutableArray alloc] init];
         
         
         [self setTouchEnabled:YES];
@@ -220,9 +222,9 @@
     //* main loop update function
     [_player update:self];
     for (SDEnemy *enemy in _enemys) {
-        [enemy update:self fireObject:_player._sprite.position];
+        [enemy update:self fireObject:_player._sprite.position projectiles:_enemyProjectiles];
     }
-    
+    /*
     for (SDEnemy *enemy in _enemys) {
         for (SDBullet *bullet in enemy._projectiles) {
             if (CGRectIntersectsRect(_player._sprite.boundingBox, bullet._sprite.boundingBox)) {
@@ -234,13 +236,46 @@
                 [self removeChild:bullet._sprite cleanup:YES];
             }
         }
+    }*/
+    NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
+    for (SDEnemy *enemy in _enemys) {
+        if ( CGRectIntersectsRect(_player._sprite.boundingBox, enemy._sprite.boundingBox) ) {
+            if (![_player shooted:enemy.Crash]) {
+                CCScene *gameOverScene = [GameOverLayer sceneWithWon:NO];
+                [[CCDirector sharedDirector] replaceScene:gameOverScene];
+            }
+            [enemyToDelete addObject:enemy];
+            [self removeChild:enemy._sprite cleanup:YES];
+        }
+    }
+    for (SDEnemy *enemy in enemyToDelete) {
+        [_enemys removeObject:enemy];
     }
     
-    
     NSMutableArray *bulletsToDelete = [[NSMutableArray alloc] init];
+    for (SDBullet *bullet in _enemyProjectiles) {
+        if (CGRectIntersectsRect(_player._sprite.boundingBox, bullet._sprite.boundingBox)) {
+            if (![_player shooted:bullet._power]) {
+                CCScene *gameOverScene = [GameOverLayer sceneWithWon:NO];
+                [[CCDirector sharedDirector] replaceScene:gameOverScene];
+            }
+            //[_enemyProjectiles removeObject:bullet];
+            [bulletsToDelete addObject:bullet];
+            [self removeChild:bullet._sprite cleanup:YES];
+        }
+    }
+    for (SDBullet *bullet in bulletsToDelete) {
+        [_enemyProjectiles removeObject:bullet];
+    }
+    //[bulletsToDelete release];
+    
+    
+    //NSMutableArray *bulletsToDelete = [[NSMutableArray alloc] init];
+    [bulletsToDelete removeAllObjects];
     for (SDBullet *bullet in _player._projectiles) {
         
-        NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
+        //NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
+        [enemyToDelete removeAllObjects];
         for (SDEnemy *enemy in _enemys) {
             if (CGRectIntersectsRect(bullet._sprite.boundingBox, enemy._sprite.boundingBox)) {
                 [enemy hurt:bullet._power];
@@ -262,7 +297,7 @@
         if (enemyToDelete.count > 0) {
             [bulletsToDelete addObject:bullet];
         }
-        [enemyToDelete release];
+        //[enemyToDelete release];
     }
     
     for (SDBullet *bullet in bulletsToDelete) {
@@ -270,7 +305,7 @@
         [self removeChild:bullet._sprite cleanup:YES];
     }
     [bulletsToDelete release];
-    
+    [enemyToDelete release];
     
 }
 
@@ -290,6 +325,7 @@
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
 	[_enemys release];
+    [_enemyProjectiles release];
     //[_label release];
     //[scorelabel release];
     

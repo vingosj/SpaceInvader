@@ -20,9 +20,9 @@
         //*init the enemy staff here
         _FireRecovery = 60;
         self._health = 5;
-        //self._hurt = 0;
+        _Crash = 3;
         self._shootCountDown = self.FireRecovery;
-        self._projectiles = [[NSMutableArray alloc] init];
+        //self._projectiles = [[NSMutableArray alloc] init];
         
         int value = (arc4random() % 5) + 1;
         self._spriteBatch = [CCSpriteBatchNode batchNodeWithFile:
@@ -102,13 +102,6 @@
     {
         [self blink:array];
     }
-    /*
-    self._health -= power;
-    if (self._health <= 0) {
-        [self explosion];
-    }
-    [self blink:array];
-     */
 }
 
 - (void)hurt:(float)power
@@ -127,16 +120,15 @@
     //*add explosion effects here
 }
 
-- (void)update:(HelloWorldLayer *)layer fireObject:(CGPoint)player
+- (void)update:(HelloWorldLayer *)layer fireObject:(CGPoint)player projectiles:(NSMutableArray *)projectiles
 {
     //*main loop of the player
     //NSLog(@"%d", self._shootCountDown);
     if (self._shootCountDown == 1) {
-        SDBullet *bullet = [[SDBullet alloc] initWithPosition:self._sprite.position andDestination:player andArray:self._projectiles];
+        SDBullet *bullet = [[SDBullet alloc] initWithPosition:self._sprite.position andDestination:player andArray:projectiles];
         [layer addChild:bullet._sprite];
-        [self._projectiles addObject:bullet];
+        [projectiles addObject:bullet];
         self._shootCountDown = self.FireRecovery;
-        //NSLog(@"hehe enemy");
     } else {
         self._shootCountDown--;
     }
@@ -145,7 +137,7 @@
 - (void)dealloc
 {
     //[self._sprite release];
-    [self._projectiles release];
+    //[self._projectiles release];
     NSLog(@"Dealloc enemy!");
     [super dealloc];
 }

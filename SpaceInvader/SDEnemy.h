@@ -16,8 +16,9 @@
 @property (assign) float _health;
 @property (assign) int _shootCountDown;
 @property (readonly) int FireRecovery;
+@property (readonly) float Crash;
 @property (assign) float _power;
-@property (assign) NSMutableArray *_projectiles;
+//@property (assign) NSMutableArray *_projectiles;
 @property (nonatomic, strong) CCSpriteBatchNode *_spriteBatch;
 @property (nonatomic, retain) CCAction *_moveAction;
 
@@ -29,7 +30,8 @@
 - (void)hurt:(float)power;
 - (void)render;
 - (void)explosion:(HelloWorldLayer *)layer;
-- (void)update:(HelloWorldLayer *)layer fireObject:(CGPoint)player;
+- (void)update:(HelloWorldLayer *)layer fireObject:(CGPoint)player
+   projectiles:(NSMutableArray *)projectiles;
 - (void)dealloc;
 
 
