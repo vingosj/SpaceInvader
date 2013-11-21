@@ -111,38 +111,44 @@
         scorelabel = [CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:12];
         [scorelabel setString: [NSString stringWithFormat:@"Score: %d",score]];
 
+        CCSprite *hpbar = [CCSprite spriteWithFile:@"fullbar.png"];
+        CCProgressTimer* powerBar= [CCProgressTimer progressWithSprite:hpbar];
+        float upbound = powerBar.sprite.contentSize.height/2;
 		// ask director for the window size
 		// position the label on the center of the screen
-		scorelabel.position =  ccp( 100 , 100 );
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
+
+		scorelabel.position =  ccp(winSize.width/6+200,
+                                   winSize.height-upbound);
 		
 		// add the label as a child to this Layer
 		
-        CCProgressTimer* powerBar= [CCProgressTimer progressWithSprite:[CCSprite spriteWithFile:@"fullbar.png"]];
         powerBar.type = kCCProgressTimerTypeBar;
         powerBar.midpoint = ccp(0,0); // starts from left
         powerBar.barChangeRate = ccp(1,0); // grow only in the "x"-horizontal direction
         powerBar.percentage = 100; // (0 - 100)
-        powerBar.position = ccp(190, 100);
-        [scorelabel addChild:powerBar z:1];
-		
+        
         [self addChild: scorelabel z:1];
         
-        CGSize winSize = [[CCDirector sharedDirector] winSize];
-        
         // Create a label for display purposes
-        _label = [CCLabelTTF labelWithString:@"Test" fontName:@"Marker Felt" fontSize:12];
-        _label.position = ccp(winSize.width/2,
-                              winSize.height-(_label.contentSize.height/2));
+        _label = [CCLabelTTF labelWithString:@"HP: " fontName:@"Marker Felt" fontSize:12];
+        _label.position = ccp(winSize.width/8,
+                              winSize.height-upbound);
         [self addChild:_label z:1];
+        powerBar.position = ccp(winSize.width/8+_label.contentSize.width+powerBar.sprite.contentSize.width/2,
+                                winSize.height-upbound);
+        [self addChild:powerBar z:1];
+
         
         // Standard method to create a button
         CCMenuItem *starMenuItem = [CCMenuItemImage
                                     itemWithNormalImage:@"ButtonStar.png" selectedImage:@"ButtonStarSel.png"
                                     target:self selector:@selector(starButtonTapped:)];
-        starMenuItem.position = ccp(60, 60);
+        starMenuItem.position = ccp(winSize.width-50,
+                                    winSize.height-upbound);
         CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
         starMenu.position = CGPointZero;
-        //[self addChild:starMenu z:1];
+        [self addChild:starMenu z:1];
 		
 		//
 		// Leaderboards and Achievements
@@ -305,6 +311,6 @@
 	[[app navController] dismissModalViewControllerAnimated:YES];
 }
 -(void)starButtonTapped:(id)sender {
-    [_label setString:@"Last button: *"];
+    [_label setString:@"Pause!"];
 }
 @end
