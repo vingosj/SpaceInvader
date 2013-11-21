@@ -25,7 +25,7 @@
         self._speed = 20.0;
         self._fireRecovery = 300;
         self._fireCountDown = 300;
-        self._health = 5;
+        self._health = 50;
         self._projectiles = [[NSMutableArray alloc] init];
         //[self initialSprite];
         self._spriteBatch = [CCSpriteBatchNode batchNodeWithFile:@"ships1.png"];
@@ -96,6 +96,7 @@
     SDBullet *bullet = [[SDBullet alloc] initWithPosition:self._sprite.position
                                                                     andArray:__projectiles];
     [__projectiles addObject:bullet];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"piu-16bit.caf"];
     return bullet;
 }
 
@@ -105,6 +106,8 @@
     SDBullet *bullet = [[SDBullet alloc] initWithPosition:self._sprite.position
                                            andDestination:dest andArray:__projectiles];
     [__projectiles addObject:bullet];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"piu-16bit.caf"];
+    NSLog(@"heheehhehej");
     return bullet;
 }
 
@@ -134,6 +137,7 @@
                                                      andArray:self._projectiles];
         [layer addChild:bullet._sprite];
         [self._projectiles addObject:bullet];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"piu-16bit.caf"];
         self._fireCountDown = self._fireRecovery;
     } else {
         self._fireCountDown--;

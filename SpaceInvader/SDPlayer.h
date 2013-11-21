@@ -8,6 +8,7 @@
 
 #import "SDBullet.h"
 #import "HelloWorldLayer.h"
+#import "SimpleAudioEngine.h"
 
 @class HelloWorldLayer;
 @interface SDPlayer : SDEntity
