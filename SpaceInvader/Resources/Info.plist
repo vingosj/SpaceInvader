@@ -37,6 +37,8 @@
 	<true/>
 	<key>UIStatusBarHidden</key>
 	<true/>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <false/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<dict>
 		<key>accelerometer</key>
