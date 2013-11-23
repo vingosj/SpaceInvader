@@ -26,6 +26,7 @@
         self._fireRecovery = 300;
         self._fireCountDown = 300;
         self._health = 50;
+        self._totalhp = 50;
         self._projectiles = [[NSMutableArray alloc] init];
         //[self initialSprite];
         self._spriteBatch = [CCSpriteBatchNode batchNodeWithFile:@"ships1.png"];

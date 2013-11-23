@@ -172,6 +172,7 @@
 		A5F8F330183CC8E800798936 /* Joystick.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F8F32B183CC8E800798936 /* Joystick.m */; };
 		A5F8F331183CC8E800798936 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F8F32C183CC8E800798936 /* joystick.png */; };
 		F5A7E74C183DDA340095A2BF /* fullbar.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A7E74B183DDA340095A2BF /* fullbar.png */; };
+		F5A7E7501840B3F60095A2BF /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A7E74F1840B3F60095A2BF /* particle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -495,6 +496,7 @@
 		A5F8F32B183CC8E800798936 /* Joystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Joystick.m; sourceTree = "<group>"; };
 		A5F8F32C183CC8E800798936 /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
 		F5A7E74B183DDA340095A2BF /* fullbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullbar.png; sourceTree = "<group>"; };
+		F5A7E74F1840B3F60095A2BF /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -607,6 +609,7 @@
 				A598C5AD182A151000D4238F /* player.png */,
 				A598C5AE182A151000D4238F /* projectile-hd.png */,
 				A598C5AF182A151000D4238F /* projectile.png */,
+				F5A7E74F1840B3F60095A2BF /* particle.png */,
 				A5A1392B1829EED80035D2C7 /* Icon-72.png */,
 				A5A1392D1829EED80035D2C7 /* Icon-Small-50.png */,
 				A5A1392F1829EED80035D2C7 /* Icon-Small.png */,
@@ -1070,6 +1073,7 @@
 				A5A1392E1829EED80035D2C7 /* Icon-Small-50.png in Resources */,
 				A5A139391829EED80035D2C7 /* iTunesArtwork in Resources */,
 				A5A139321829EED80035D2C7 /* Icon-Small@2x.png in Resources */,
+				F5A7E7501840B3F60095A2BF /* particle.png in Resources */,
 				A598C5B3182A151000D4238F /* player.png in Resources */,
 				A5F8F2F1183C58D000798936 /* f4.png in Resources */,
 				A5F8F30D183CB0A100798936 /* enemy4.plist in Resources */,

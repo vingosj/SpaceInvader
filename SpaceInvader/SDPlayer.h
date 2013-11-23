@@ -15,6 +15,7 @@
 
 
 @property (assign) int _level;
+@property (assign) float _totalhp;
 @property (assign) float _health;
 @property (assign) float _speed;
 @property (assign) BOOL _dead;
