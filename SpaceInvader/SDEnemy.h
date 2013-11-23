@@ -27,7 +27,7 @@
 - (void)actionInBezier:(NSMutableArray *)array andLayer:(HelloWorldLayer *)layer;
 - (void)actionWithArray:(NSMutableArray *)array andLayer:(HelloWorldLayer *)layer;
 - (void)blink:(NSMutableArray *)array;
-- (void)shooted:(HelloWorldLayer *)layer andArray:(NSMutableArray *)array;
+- (BOOL)shooted:(HelloWorldLayer *)layer andArray:(NSMutableArray *)array;
 - (void)hurt:(float)power;
 - (void)render;
 - (void)explosion:(HelloWorldLayer *)layer;

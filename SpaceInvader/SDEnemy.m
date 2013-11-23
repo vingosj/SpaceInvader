@@ -140,15 +140,17 @@
     //NSLog(@"here");
 }
 
-- (void)shooted:(HelloWorldLayer *)layer andArray:(NSMutableArray *)array
+- (BOOL)shooted:(HelloWorldLayer *)layer andArray:(NSMutableArray *)array
 {
     if (self._health <= 0) {
         [array removeObject:self];
         [self explosion:layer];
+        return false;
     }
     else
     {
         [self blink:array];
+        return true;
     }
 }
 

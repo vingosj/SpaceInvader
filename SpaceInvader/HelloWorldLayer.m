@@ -254,7 +254,9 @@
         }
     }
     for (SDEnemy *enemy in enemyToDelete) {
+        CGPoint position = enemy._sprite.position;
         [_enemys removeObject:enemy];
+        [self Explosion:position];
     }
     
     NSMutableArray *bulletsToDelete = [[NSMutableArray alloc] init];
@@ -295,27 +297,18 @@
                 {
                     score++;
                     [scorelabel setString: [NSString stringWithFormat:@"Score: %d",score]];
-                    CCParticleSystem *emitter = [CCParticleExplosion node];
-                    
-                    //set the location of the emitter
-                    emitter.position = enemy._sprite.position;
-                    //set size of particle animation
-                    emitter.scale = 0.2;
-                    //set an Image for the particle
-                    emitter.texture = [[CCTextureCache sharedTextureCache] addImage:@"particle.png"];
-                    
-                    //set length of particle animation
-                    [emitter setLife:0.1f];
-                    [emitter setLifeVar:0.5f];
-                    //add to layer ofcourse(effect begins after this step)
-                    [self addChild: emitter];
+                    //[self Explosion:enemy._sprite.position];
                 }
             }
         }
         
         for (SDEnemy *enemy in enemyToDelete) {
             //[_enemys removeObject:enemy];
-            [enemy shooted:self andArray:_enemys];
+            CGPoint position = enemy._sprite.position;
+            if (![enemy shooted:self andArray:_enemys])
+            {
+                [self Explosion:position];
+            }
             //[self removeChild:enemy._sprite cleanup:YES];
         }
         
@@ -332,6 +325,23 @@
     [bulletsToDelete release];
     [enemyToDelete release];
     
+}
+
+- (void)Explosion:(CGPoint)position
+{
+    CCParticleSystem *emitter = [CCParticleExplosion node];
+    //set the location of the emitter
+    emitter.position = position;
+    //set size of particle animation
+    emitter.scale = 0.2;
+    //set an Image for the particle
+    emitter.texture = [[CCTextureCache sharedTextureCache] addImage:@"particle.png"];
+    
+    //set length of particle animation
+    [emitter setLife:0.1f];
+    [emitter setLifeVar:0.5f];
+    //add to layer ofcourse(effect begins after this step)
+    [self addChild: emitter];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
