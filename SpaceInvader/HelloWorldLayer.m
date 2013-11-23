@@ -29,6 +29,8 @@
     NSMutableArray *_enemys;
     NSMutableArray *_enemyProjectiles;
     Joystick *_joystick;
+    CCSprite *hpbar;
+    float upbound;
 }
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -113,9 +115,9 @@
         scorelabel = [CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:12];
         [scorelabel setString: [NSString stringWithFormat:@"Score: %d",score]];
 
-        CCSprite *hpbar = [CCSprite spriteWithFile:@"fullbar.png"];
-        CCProgressTimer* powerBar= [CCProgressTimer progressWithSprite:hpbar];
-        float upbound = powerBar.sprite.contentSize.height/2;
+        hpbar = [CCSprite spriteWithFile:@"fullbar.png"];
+        //powerBar= [CCProgressTimer progressWithSprite:hpbar];
+        upbound = hpbar.contentSize.height/2;
 		// ask director for the window size
 		// position the label on the center of the screen
         CGSize winSize = [[CCDirector sharedDirector] winSize];
@@ -124,11 +126,6 @@
                                    winSize.height-upbound);
 		
 		// add the label as a child to this Layer
-		
-        powerBar.type = kCCProgressTimerTypeBar;
-        powerBar.midpoint = ccp(0,0); // starts from left
-        powerBar.barChangeRate = ccp(1,0); // grow only in the "x"-horizontal direction
-        powerBar.percentage = 100; // (0 - 100)
         
         [self addChild: scorelabel z:1];
         
@@ -137,9 +134,9 @@
         _label.position = ccp(winSize.width/8,
                               winSize.height-upbound);
         [self addChild:_label z:1];
-        powerBar.position = ccp(winSize.width/8+_label.contentSize.width+powerBar.sprite.contentSize.width/2,
+        hpbar.position = ccp(winSize.width/8+_label.contentSize.width+hpbar.contentSize.width/2,
                                 winSize.height-upbound);
-        [self addChild:powerBar z:1];
+        [self addChild:hpbar z:1];
 
         
         // Standard method to create a button
@@ -242,6 +239,12 @@
     NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
     for (SDEnemy *enemy in _enemys) {
         if ( CGRectIntersectsRect(_player._sprite.boundingBox, enemy._sprite.boundingBox) ) {
+            float percent = _player._health/_player._totalhp;
+            hpbar.scaleX = percent;
+            CGSize winSize = [[CCDirector sharedDirector] winSize];
+            hpbar.position = ccp(winSize.width/8+_label.contentSize.width+hpbar.contentSize.width/2*percent,
+                                 winSize.height-upbound);
+            //[powerBar.sprite setScale:percent];
             if (![_player shooted:enemy.Crash]) {
                 CCScene *gameOverScene = [GameOverLayer sceneWithWon:NO];
                 [[CCDirector sharedDirector] replaceScene:gameOverScene];
@@ -257,6 +260,12 @@
     NSMutableArray *bulletsToDelete = [[NSMutableArray alloc] init];
     for (SDBullet *bullet in _enemyProjectiles) {
         if (CGRectIntersectsRect(_player._sprite.boundingBox, bullet._sprite.boundingBox)) {
+            float percent = _player._health/_player._totalhp;
+            hpbar.scaleX = percent;
+            CGSize winSize = [[CCDirector sharedDirector] winSize];
+            hpbar.position = ccp(winSize.width/8+_label.contentSize.width+hpbar.contentSize.width/2*percent,
+                                 winSize.height-upbound);
+            //[self addChild:hpbar z:1];
             if (![_player shooted:bullet._power]) {
                 CCScene *gameOverScene = [GameOverLayer sceneWithWon:NO];
                 [[CCDirector sharedDirector] replaceScene:gameOverScene];
@@ -282,10 +291,24 @@
             if (CGRectIntersectsRect(bullet._sprite.boundingBox, enemy._sprite.boundingBox)) {
                 [enemy hurt:bullet._power];
                 [enemyToDelete addObject:enemy];
-                if (enemy._health == 0)
+                if (enemy._health >= 0)
                 {
                     score++;
                     [scorelabel setString: [NSString stringWithFormat:@"Score: %d",score]];
+                    CCParticleSystem *emitter = [CCParticleExplosion node];
+                    
+                    //set the location of the emitter
+                    emitter.position = enemy._sprite.position;
+                    //set size of particle animation
+                    emitter.scale = 0.2;
+                    //set an Image for the particle
+                    emitter.texture = [[CCTextureCache sharedTextureCache] addImage:@"particle.png"];
+                    
+                    //set length of particle animation
+                    [emitter setLife:0.1f];
+                    [emitter setLifeVar:0.5f];
+                    //add to layer ofcourse(effect begins after this step)
+                    [self addChild: emitter];
                 }
             }
         }
