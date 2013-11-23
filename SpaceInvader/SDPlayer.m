@@ -107,7 +107,7 @@
                                            andDestination:dest andArray:__projectiles];
     [__projectiles addObject:bullet];
     [[SimpleAudioEngine sharedEngine] playEffect:@"piu-16bit.caf"];
-    NSLog(@"heheehhehej");
+    //NSLog(@"heheehhehej");
     return bullet;
 }
 

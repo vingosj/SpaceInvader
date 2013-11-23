@@ -152,6 +152,8 @@
         starMenu.position = CGPointZero;
         [self addChild:starMenu z:1];
 		
+        
+        
 		//
 		// Leaderboards and Achievements
 		//

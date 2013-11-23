@@ -24,6 +24,7 @@
 
 - (id)initWithArray:(NSMutableArray *)array andLayer:(HelloWorldLayer *)layer;
 - (void)initialSprite;
+- (void)actionInBezier:(NSMutableArray *)array andLayer:(HelloWorldLayer *)layer;
 - (void)actionWithArray:(NSMutableArray *)array andLayer:(HelloWorldLayer *)layer;
 - (void)blink:(NSMutableArray *)array;
 - (void)shooted:(HelloWorldLayer *)layer andArray:(NSMutableArray *)array;

@@ -47,7 +47,14 @@
         [self._sprite runAction:self._moveAction];
         [self._spriteBatch addChild:self._sprite];
         
-        [self actionWithArray:array andLayer:layer];
+        //* straight line or Bezier Spline
+        value = (arc4random() % 2) + 1;
+        if (value == 1) {
+            [self actionWithArray:array andLayer:layer];
+        } else {
+            [self actionInBezier:array andLayer:layer];
+        }
+        
     }
     return self;
 }
@@ -60,6 +67,47 @@
     int rangeY = maxY - minY;
     int actualY = (arc4random() % rangeY) + minY;
     [self._sprite setPosition:ccp(self.WindowSize.width - self._sprite.contentSize.width/2, actualY)];
+}
+
+- (void)actionInBezier:(NSMutableArray *)array andLayer:(HelloWorldLayer *)layer
+{
+    int maxX = self.WindowSize.width - self._sprite.contentSize.width/2;
+    int minX = self._sprite.contentSize.width/2;
+    int actualX1 = maxX;
+    int actualX2 = (maxX-minX)*3/4 + minX;
+    int actualX3 = (maxX-minX)*2/4 + minX;
+    int actualX4 = (maxX-minX)/4 + minX;
+    int actualX5 = minX;
+    int minY = self._sprite.contentSize.height / 2;
+    int maxY = self.WindowSize.height - self._sprite.contentSize.height/2;
+    int rangeY = maxY - minY;
+    int actualY1 = (arc4random() % rangeY) + minY;
+    int actualY2 = (arc4random() % rangeY) + minY;
+    int actualY3 = (arc4random() % rangeY) + minY;
+    int actualY4 = (arc4random() % rangeY) + minY;
+    int actualY5 = (arc4random() % rangeY) + minY;
+    //
+    ccBezierConfig bezier1;
+    bezier1.controlPoint_1 = ccp(actualX1, actualY1);
+    bezier1.controlPoint_2 = ccp(actualX2, actualY2);
+    bezier1.endPosition = ccp(actualX3, actualY3);
+    id bezierForward1 = [CCBezierTo actionWithDuration:3 bezier:bezier1];
+    
+    ccBezierConfig bezier2;
+    bezier2.controlPoint_1 = ccp(actualX3, actualY3);
+    bezier2.controlPoint_2 = ccp(actualX4, actualY4);
+    bezier2.endPosition = ccp(actualX5, actualY5);
+    id bezierForward2 = [CCBezierTo actionWithDuration:3 bezier:bezier2];
+    
+    CCCallBlockN *actionMoveDone = [CCCallBlockN actionWithBlock: ^(CCNode *node) {
+        [node removeFromParentAndCleanup:YES];
+        [array removeObject:self];
+    }];
+    CCAction *sequence = [CCSequence actions:bezierForward1, bezierForward2, actionMoveDone, nil];
+    sequence.tag = 1;
+    [self._sprite runAction:sequence];
+    //[layer addChild:self._sprite];
+    [array addObject:self];
 }
 
 - (void)actionWithArray:(NSMutableArray *)array andLayer:(HelloWorldLayer *)layer
